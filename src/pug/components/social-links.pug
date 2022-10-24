@@ -1,0 +1,39 @@
+mixin social-links({ isBiggerSize } = {})
+    -
+        var links = [{
+            link: "https://vk.com/likefm",
+            code: "vk",
+            text: "Like FM во ВКонтакте",
+            width: 32,
+            height: 20,
+        }, {
+            link: "https://www.youtube.com/channel/UC92Get49GHJDx_BKFgJ0S4w",
+            code: "yt",
+            text: "Like FM в Youtube",
+            width: 31,
+            height: 22,
+        }, {
+            link: "https://rutube.ru/channel/23457236/",
+            code: "rutube",
+            text: "Like FM в Rutube",
+            width: 18,
+            height: 20,
+        }, {
+            link: "https://yappy.media/profile/4e32fec1034342e298597065a2cf01b7?utm_source=url&utm_medium=share&utm_campaign=profile",
+            code: "yappy",
+            text: "Like FM в Yappy",
+            width: 25,
+            height: 25,
+        }, {
+            link: "/contacts.html",
+            code: "mail",
+            text: "Перейти на страницу \"Контакты\"",
+            width: 32,
+            height: 23,
+        }]
+
+    ul.social-links.list-reset(class=`${isBiggerSize ? "social-links_s_big" : ""}`)&attributes(attributes)
+        each link in links
+            li.social-links__item
+                a.social-links__link(href=link.link target="_blank" rel="noopener" aria-label=link.text)
+                    +svg(link.code)(class="social-links__icon" width=link.width height=link.height)

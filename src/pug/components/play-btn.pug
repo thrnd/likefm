@@ -1,0 +1,4 @@
+mixin play-btn({ disabled = false } = {})
+    button.play-btn.play(class=`${disabled ? "play-btn_disabled" : ""}` type="button" aria-label="Начать воспроизведение" disabled=disabled title=`${disabled ? "трек не найден": ""}`)&attributes(attributes)
+        +svg("play")(class="play-btn__icon play-btn__icon_t_play" width="66" height="54")
+        +svg("pause")(class="play-btn__icon" width="66" height="54")

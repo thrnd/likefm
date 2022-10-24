@@ -1,0 +1,226 @@
+// index-page
+
+.index-slider {
+    padding-left: var(--container-gap);
+    padding-right: var(--container-gap);
+    margin-right: calc(var(--container-gap) * -1);
+    margin-left: calc(var(--container-gap) * -1);
+    margin-bottom: 3.65rem;
+
+    overflow: hidden;
+
+    @media (max-width: 991px) {
+        padding-right: 0;
+        padding-left: 0;
+        margin-top: rem(10);
+        margin-bottom: rem(20);
+    }
+
+    &__slider {
+        max-width: 1056px;
+        margin-bottom: 1rem;
+
+        @media (max-width: 1800px) {
+            max-width: 75%;
+        }
+        @media (max-width: 991px) {
+            max-width: 100%;
+            margin-bottom: 0;
+            padding-left: var(--container-gap);
+            padding-right: var(--container-gap);
+        }
+    }
+
+    &__inner,
+    &__slide {
+        // из-за этой пепеги баг в лисе
+        -moz-transform-style: initial !important;
+    }
+
+    &__slide {
+        border-radius: 20px;
+
+        overflow: hidden;
+        cursor: grab;
+
+        &.swiper-slide-active {
+            cursor: default;
+
+            &:matches(a) {
+                cursor: pointer;
+            }
+        }
+
+        @media (max-width: 575px) {
+            max-width: 330px;
+
+            border-radius: 10px;
+        }
+    }
+
+    &__img {
+        display: block;
+
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+
+        @media (max-width: 991px) {
+            display: none;
+        }
+    }
+
+    &__bullet {
+        position: relative;
+
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border: 0;
+
+        background-color: transparent;
+
+        &:before {
+            content: "";
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+            background-color: var(--bullet);
+
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            outline: none;
+
+            &::before {
+                background-color: var(--blue-50);
+            }
+        }
+        &:active,
+        &_active {
+
+            &::before {
+                background-color: var(--blue);
+            }
+        }
+    }
+}
+
+.new-tracks-slider {
+    padding-right: calc(var(--container-gap) - var(--new-tracks-gap));
+    padding-left: calc(var(--container-gap) - var(--new-tracks-gap));
+    margin-right: calc(var(--container-gap) * -1);
+    margin-left: calc(var(--container-gap) * -1);
+}
+
+.index-banner {
+    display: flex;
+    justify-content: center;
+
+    &__banner {
+        display: block;
+
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.index-chart-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 50px;
+
+    font-size: rem(18);
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: currentColor;
+
+    background-color: var(--secondary-bg);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .1);
+
+    &:hover,
+    &:focus {
+        color: var(--blue);
+    }
+    &:active {
+        color: var(--d-blue);
+    }
+
+    @media (min-width: 992px) {
+        display: none;
+    }
+}
+
+.index-news-slider {
+
+    &__nav {
+        display: flex;
+        justify-content: center;
+
+        padding-top: 20px;
+
+        @media (max-width: 991px) {
+            justify-content: space-between;
+
+            max-width: 260px;
+            padding-top: 0;
+            margin: 0 auto;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        border: 0;
+
+        color: var(--text);
+
+        background-color: transparent;
+        cursor: pointer;
+
+        &_disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        &_t {
+            &_prev {
+                margin-right: 30px;
+
+                transform: rotate(-90deg);
+            }
+            &_next {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    &__icon {
+
+        @media (max-width: 991px) {
+            width: 18px;
+            height: auto;
+        }
+    }
+}

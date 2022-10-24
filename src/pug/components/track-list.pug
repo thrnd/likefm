@@ -1,0 +1,16 @@
+mixin track-list({ items, isChart, isIndex })
+    ol.player-list.list-reset(class=`${isChart ? "player-list_view_chart" : ""} ${isIndex ? "player-list_page_index" : ""}`)&attributes(attributes)
+        each track in items
+            li.player-list__item
+                +player({
+                    mixin: `${isChar ? "player_view_chart " : ""}player-list__player play-btn-wrap like-btn-wrap`,
+                    btnMixin: "play-btn_s_sm player__play-btn play-btn-wrap__btn",
+                    num: track.num,
+                    trackData: {
+                        title: track.title,
+                        artist: track.artist,
+                        time: track.time,
+                    },
+                    likes: "20.1K",
+                    isChart,
+                })

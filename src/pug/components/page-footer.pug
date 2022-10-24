@@ -1,0 +1,53 @@
+footer.page-footer.container
+    .page-footer__inner
+        .page-footer__col
+            +logo({ noSlogan: true, })(class="page-footer__logo")
+
+        .page-footer__col.page-footer__col_s_lg
+            p
+                | ООО «М-ПУЛ+», 2021
+            p
+                | <a href="https://www.gpmradio.ru/station/branch/36/radio/16" target="_blank" rel="noopener">Размещение рекламы</a> на Like FM - сейлз-хаус «Газпром&#8288;-&#8288;Медиа»: <a href="tel:74959214041">+7 (495) 921-40-41</a>, <a href="mailto:sales@gazprom-media.com">sales@gazprom-media.com</a>
+            p
+                | Телефон редакции: <a href="tel:74959373367">+7 (495) 937 33 67</a>
+            p
+                | Адрес: РФ, 117105, г. Москва, Варшавское шоссе, дом 9, строение 1А, помещение 8
+            p
+                | <a href="/rules">Правила участия в акциях, конкурсах, играх</a>
+            p.page-footer__links
+                | <a href="/policy">Политика конфиденциальности</a> <a href="/sout">Результаты СОУТ</a>
+        .page-footer__col
+            span.visually-hidden
+                | Слушайте Like FM в:
+            ul.app-links.list-reset
+                -
+                    const items = [{
+                        link: "http://apple.co/20R8WoQ",
+                        name: "appstore-logo",
+                        alt: "Приложение Like FM в Appstore",
+                    }, {
+                        link: "http://bit.ly/22vkH62",
+                        name: "googleplay-logo",
+                        alt: "Приложение Like FM в Google play",
+                    }, {
+                        link: "https://vk.com/app4854299",
+                        name: "vkmusic-logo",
+                        alt: "Приложение Like FM во ВКонтакте",
+                    }, {
+                        link: "https://itunes.apple.com/ru/curator/1355931153",
+                        name: "applemusic-logo",
+                        alt: "Страница с плейлистами Like FM в iTunes",
+                    }]
+                each item in items
+                    li.app-links__item
+                        a.app-links__link(href=item.link target="_blank" rel="noopener")
+                            +single-webpic({
+                                name: item.name,
+                                ext: "png",
+                                alt: item.alt,
+                            })(class="app-links__img" width="117" height="36")
+
+.popup.popup_content_video
+    button.popup__close(type="button")
+    .popup__inner
+        .iframe-wrap

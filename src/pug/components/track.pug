@@ -1,0 +1,22 @@
+mixin track({ img, title, artist, likes, isMainTrack })
+    .track(class=`${isMainTrack ? "track_view_main" : ""}`)
+        .play-btn-wrap.like-btn-wrap.track__cover-wrap
+            - const roll = Math.round( Math.random() );
+            if roll === 1
+                img.track__cover(src=`img/${img}` alt=`Обложка трека \"${title}\"`)
+            else
+                .cover-placeholder.track__cover-ph
+                    img.cover-placeholder__icon(src="img/track-placeholder.svg" alt="")
+            +play-btn(class="js-sample-btn play-btn-wrap__btn track__play-btn")
+            +like-btn({ mixin: "track__like-btn", likes, isLarge: isMainTrack })
+        if isMainTrack
+            h1.title.track-title
+                span.track-title__track
+                    = title
+                span.track-title__artist
+                    = artist
+        else
+            a.track__title(href="#")
+                = title
+            a.track__artist(href="#")
+                = artist

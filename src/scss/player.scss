@@ -1,0 +1,305 @@
+.player {
+    --chart-number: currentColor;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    min-height: 72px;
+    padding: 10px 20px;
+    padding-left: 0;
+
+    background-color: var(--secondary-bg);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .1);
+    overflow: hidden;
+
+    @media (max-width: 991px) {
+        min-height: 50px;
+        padding: 5px 10px;
+    }
+
+    // модификатор _view_main используется для главного плеера сайта
+    // модификатор _view_chart используется в списках чартов
+    &_view {
+        &_main {
+            padding: 0;
+
+            color: var(--l-black);
+
+            box-shadow: none;
+            background-color: transparent;
+            overflow: unset;
+        }
+    }
+
+    &__time {
+        width: 100px;
+        margin-right: 10px;
+
+        font-size: rem(18);
+        text-align: center;
+
+        @media (max-width: 991px) {
+            flex-shrink: 0;
+            width: 47px;
+
+            font-size: rem(14);
+        }
+    }
+
+    &__num {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        box-sizing: border-box;
+        min-width: 72px;
+        padding: 0 14px;
+        margin-right: 10px;
+
+        font-size: rem(36);
+        line-height: 1em;
+        font-weight: bold;
+        text-align: center;
+        color: var(--chart-number);
+
+        @media (max-width: 991px) {
+            min-width: 30px;
+            padding: 0;
+
+            font-size: rem(24);
+        }
+    }
+
+    &__play-btn {
+        width: 100px;
+        height: 100%;
+
+        color: var(--blue);
+
+        background-color: var(--secondary-bg);
+
+        @media (max-width: 991px) {
+            width: 67px;
+        }
+
+        &:hover,
+        &:focus,
+        &.pause {
+            color: var(--blue);
+        }
+        &:active {
+            color: var(--d-blue);
+        }
+
+        &::before {
+            background-image: var(--loader_c_blue);
+        }
+    }
+
+    &_view_main &__play-btn {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        margin-right: 50px;
+
+        color: var(--white);
+
+        background-color: var(--blue);
+        border-radius: 50%;
+
+        @media (max-width: 1280px) {
+            margin-right: 25px;
+        }
+        @media (max-width: 991px) {
+            margin-right: 20px;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--gray);
+        }
+        &:active {
+            background-color: var(--d-blue);
+        }
+    }
+    &_view_chart &__play-btn {
+        width: 72px;
+
+        @media (max-width: 991px) {
+            width: 45px;
+        }
+    }
+
+    &__cover {
+        flex-shrink: 0;
+        width: 50px;
+        height: auto;
+        margin-right: 20px;
+
+        @media (max-width: 991px) {
+            width: 40px;
+            margin-right: 15px;
+        }
+    }
+
+    &_view_main &__cover {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    &__cover-wrap {
+        position: relative;
+
+        flex-shrink: 0;
+        width: 70px;
+        height: 70px;
+        margin-right: 25px;
+
+        @media (max-width: 991px) {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+
+        flex-grow: 1;
+        margin-right: 10px;
+
+        overflow: hidden;
+
+        @media (max-width: 991px) {
+            margin-right: 5px;
+        }
+    }
+
+    &_view_main &__inner {
+        // max-width: 78%;
+
+        @media (max-width: 1280px) {
+            // max-width: 300px;
+            // max-width: 10%;
+        }
+    }
+
+    &__line {
+        flex-basis: 100%;
+
+        white-space: nowrap;
+
+        &_ticking {
+            animation-name: titleTicking;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+
+            @keyframes titleTicking {
+                20%  { transform: translateX(0); }
+                90%  { transform: translateX(-80%); }
+                100% { transform: translateX(-80%); }
+            }
+        }
+    }
+
+    &__track,
+    &__artist {
+        font-size: 1rem;
+
+        @media (max-width: 991px) {
+            font-size: rem(12);
+        }
+    }
+    &__track {
+        font-size: rem(18);
+        font-weight: bold;
+
+        @media (max-width: 991px) {
+            font-size: rem(13);
+        }
+    }
+}
+
+.progress-bar {
+    position: relative;
+
+    display: flex;
+
+    height: 7px;
+
+    background-color: var(--gray);
+    border-radius: 1px;
+
+    &[data-disabled="true"] {
+        display: none;
+    }
+
+    &__back {
+        background-color: var(--blue);
+        border-radius: 1px;
+    }
+
+    &__thumb {
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        width: 11px;
+        height: 11px;
+
+        background-color: var(--blue);
+        border-radius: 50%;
+
+        transform: translate(-50%, -50%);
+    }
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 991px) {
+        display: none;
+    }
+
+    &__mute-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+
+        color: var(--text);
+
+        background: transparent url("data:image/svg+xml,%3Csvg width='22' height='18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.504 15.67c0 .377-.214.72-.548.88a.932.932 0 0 1-1.015-.131l-5.215-4.403H1.95a.963.963 0 0 1-.954-.971V7.173c0-.537.427-.972.954-.972h2.778L9.94 1.798a.938.938 0 0 1 1.015-.13c.334.16.548.502.548.879V15.67Zm3.666-1.518a.944.944 0 0 1-.743-.282l-.128-.13a.985.985 0 0 1-.092-1.266 5.677 5.677 0 0 0 1.091-3.365 5.653 5.653 0 0 0-1.238-3.56.984.984 0 0 1 .066-1.3l.127-.13c.19-.194.446-.3.723-.283.269.014.52.143.69.356a7.775 7.775 0 0 1 1.718 4.917 7.815 7.815 0 0 1-1.518 4.656.95.95 0 0 1-.696.387Zm3.943 3.003a.948.948 0 0 1-.689.344l-.04.001a.945.945 0 0 1-.674-.285l-.126-.127a.985.985 0 0 1-.055-1.313 10.492 10.492 0 0 0 2.386-6.666c0-2.533-.907-4.97-2.554-6.865a.985.985 0 0 1 .038-1.33l.125-.128a.92.92 0 0 1 .703-.285c.263.007.511.125.686.325A12.595 12.595 0 0 1 22 9.11c0 2.942-1.025 5.8-2.887 8.046Z' fill='%230090D4'/%3E%3C/svg%3E") no-repeat center /21px auto;
+        cursor: pointer;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--l-blue);
+        }
+
+        &.muted {
+            background-image: url("data:image/svg+xml,%3Csvg width='22' height='15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.96 14.699a.953.953 0 0 0 .549-.863V.954A.954.954 0 0 0 8.946.22L3.732 4.54H.954A.954.954 0 0 0 0 5.496v3.8c0 .527.427.954.954.954H3.73l5.215 4.321a.953.953 0 0 0 1.014.129Zm4.843-10.983a1.039 1.039 0 0 0-1.494 0 1.1 1.1 0 0 0 0 1.53L15.55 7.54l-2.24 2.295a1.1 1.1 0 0 0 0 1.53 1.039 1.039 0 0 0 1.493 0l2.24-2.295 2.241 2.295a1.039 1.039 0 0 0 1.494 0 1.1 1.1 0 0 0 0-1.53l-2.24-2.295 2.24-2.295a1.1 1.1 0 0 0 0-1.53 1.039 1.039 0 0 0-1.494 0l-2.24 2.295-2.24-2.294Z' fill='%230090D4'/%3E%3C/svg%3E");
+        }
+    }
+
+    &__mute-icon {
+        fill: currentColor;
+    }
+
+    &__inner {
+        width: 89px;
+    }
+}

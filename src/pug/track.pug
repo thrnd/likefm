@@ -1,0 +1,88 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Трек"
+    - isInner = true
+
+append content
+    +track({
+        title: "Точка",
+        artist: "Клава КОКА",
+        img: "track-2.jpg",
+        likes: "20.1k",
+        isMainTrack: true,
+    })
+
+    h2.title.title_s_sm
+        | Треки
+
+    -
+        const tracks = [{
+            title: "Early In The Morning",
+            artist: "KRIS KROSS AMSTERDAM & SHAGGY & Conor MAYNARD",
+            likes: "20.1К"
+        }, {
+            title: "Точка",
+            artist: "Клава Кока",
+            likes: "7"
+        }, {
+            title: "And You Cut (Provi rmx)",
+            artist: "Amelie Martinez",
+            likes: "90"
+        }, {
+            title: "Открытка",
+            artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+            likes: "124"
+        }, {
+            title: "Сон",
+            artist: "RAMIL’",
+            likes: "999"
+        }, {
+            title: "Пары",
+            artist: "ТКАЧ"
+        }];
+        let n = 0;
+
+    ul.track-list.list-reset
+        while n < tracks.length
+            li.track-list__item.swiper-slide
+                +track({
+                    img: `track-${n + 1}.jpg`,
+                    title: tracks[n].title,
+                    artist: tracks[n].artist,
+                    likes: tracks[n].likes,
+                })
+            - n++
+
+    h2.title.title_s_sm
+        | Видео
+
+    -
+        const videos = [{
+            artist: "GALIBRI & MAVIK",
+            title: "Федерико Феллини",
+        }, {
+            artist: "Lil NAS X & Jack HARLOW",
+            title: "Industry Baby",
+        }, {
+            artist: "VERBEE",
+            title: "Довела",
+        }, {
+            artist: "GALIBRI & MAVIK",
+            title: "Федерико Феллини",
+        }, {
+            artist: "Lil NAS X & Jack HARLOW",
+            title: "Industry Baby",
+        },]
+        n = 0
+    ul.video-list.list-reset
+        while n < videos.length
+            li.video-list__item
+                +video({
+                    img: `video-${n + 1}.jpg`,
+                    title: videos[n].title,
+                    artist: videos[n].artist,
+                })
+            - n++
+
+    append scripts

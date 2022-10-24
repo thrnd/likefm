@@ -1,0 +1,55 @@
+include ../mixins/pic
+include ../mixins/single-webpic
+include ../mixins/svg
+include ./social-links
+include ./track-list
+include ./play-btn
+include ./like-btn
+include ./track
+include ./logo
+include ./video
+include ./player
+include ./search
+include ./form
+include ./news-article
+
+block vars
+    - var pageTitle
+    - var isAside = false
+    - var isInner = false
+
+<!DOCTYPE html>
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        title #{pageTitle} - Like FM
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="css/style.min.css" rel="stylesheet")
+    body.page
+        include ./page-header
+
+        .container#MPAjaxMainBlock
+            if isInner
+                prepend content
+                    .container__inner
+            if isAside
+                .layout-grid
+                    .layout-grid__main
+                        block content
+                    .layout-grid__aside
+                        img(src="img/ads-aside.png" style="width:100%;max-width:300px")
+            else
+                block content
+
+        include ./page-footer
+
+        .clipboard-feedback
+
+        block scripts
+            script(src="js/isDoc.min.js")
+            script(src="js/Datepicker.min.js")
+            script(src="js/TitlesTicker.min.js")
+            script(src="js/main.min.js")
+            script(src="js/local.min.js")

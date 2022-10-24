@@ -1,0 +1,329 @@
+.like-btn {
+    position: relative;
+
+    display: inline-flex;
+    justify-content: flex-end;
+
+    height: 32px;
+
+    font-size: 1rem;
+    line-height: 1em;
+    font-weight: 600;
+    color: var(--white);
+
+    @media (max-width: 991px) {
+        height: 22px;
+
+        font-size: .75rem;
+    }
+
+    // используется на странице трека
+    &_s_lg {
+        height: 40px;
+
+        font-size: rem(24);
+
+        @media (max-width: 767px) {
+            height: 28px;
+
+            font-size: 1rem;
+        }
+    }
+
+    // используется в главной плеера
+    &_view_main-player {
+        font-size: rem(14);
+    }
+
+    &__likes {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        box-sizing: border-box;
+        min-width: 32px;
+        padding: 5px 10px;
+
+        text-transform: uppercase;
+
+        border-radius: 5px;
+        background-color: var(--red);
+
+        @media (max-width: 991px) {
+            padding: 3px 5px;
+        }
+    }
+
+    &_disabled &__likes {
+        position: static;
+
+        background-color: var(--d-gray);
+    }
+
+    &_s_lg &__likes {
+
+        @media (max-width: 767px) {
+            min-width: 54px;
+        }
+    }
+
+    &_view_main-player &__likes {
+        position: absolute;
+        top: -6px;
+        right: -20px;
+        bottom: unset;
+        z-index: 2;
+
+        min-width: 41px;
+        height: 24px;
+        padding: 0 5px;
+
+        pointer-events: none;
+
+        @media (max-width: 991px) {
+            right: 2px;
+
+            min-width: 32px;
+
+            transform: translateX(50%);
+        }
+
+        &::after {
+            content: "Like";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            font-size: 1rem;
+            line-height: 24px;
+            text-align: center;
+            text-transform: none;
+
+            opacity: 0;
+            background-color: var(--blue);
+            border-radius: 5px;
+            transition: opacity .15s;
+
+            @media (max-width: 991px) {
+                font-size: inherit;
+            }
+        }
+    }
+
+    &_disabled &__likes::after {
+        content: none;
+    }
+
+    &__btn {
+        position: relative;
+        left: 2px;
+        z-index: 1;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        box-sizing: border-box;
+        min-width: 73px;
+        height: 32px;
+        padding: 5px 9px;
+        border: 0;
+
+        font-family: inherit;
+        line-height: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+
+        opacity: 0;
+        background-color: var(--blue);
+        border-radius: 5px;
+        transition: opacity .15s;
+
+        @media (max-width: 991px) {
+            min-width: 32px;
+            height: 22px;
+            padding: 3px 5px;
+
+            font-size: 0;
+
+            background-color: var(--red);
+            opacity: 1;
+            transition: none;
+        }
+
+        &::before {
+            width: 100%;
+
+            font-size: .75rem;
+            text-align: center;
+
+            @media (max-width: 991px) {
+                content: attr(data-likes-rounded);
+            }
+        }
+
+        &:focus,
+        &:active {
+
+            @media (min-width: 992px) {
+                opacity: 1;
+            }
+        }
+        &:active {
+            background-color: var(--d-blue);
+
+            @media (max-width: 991px) {
+                background-color: var(--red-50);
+            }
+        }
+
+        // йобаные костыли для йобаного иоса
+        @media (hover) {
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &_fading {
+            animation-name: fade;
+            animation-duration: .5s;
+            animation-delay: .5s;
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+
+            @keyframes fade {
+                100% { opacity: 0; }
+            }
+
+            @media (max-width: 991px) {
+                background-color: var(--red);
+            }
+        }
+
+        &_fading::before,
+        &:focus::before,
+        &:active::before {
+            content: none;
+        }
+    }
+
+    &_s_lg &__btn {
+        min-width: 99px;
+        height: 40px;
+
+        @media (max-width: 767px) {
+            min-width: auto;
+            height: 28px;
+        }
+    }
+
+    &_view_main-player &__btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+
+        background-color: var(--black-50);
+        border-radius: 0;
+
+        &::before {
+            content: none;
+        }
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            top: -6px;
+            right: -20px;
+            z-index: 2;
+
+            height: 24px;
+            width: 100%;
+        }
+    }
+
+    &_disabled &__btn {
+        display: none;
+    }
+
+    &:hover &__btn,
+    &:focus-within &__btn {
+        opacity: 1;
+    }
+    &_view_main-player:hover &__likes::after,
+    &_view_main-player:focus-within &__likes::after {
+        opacity: 1;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        height: 1em;
+        width: auto;
+        margin-right: 2px;
+        margin-left: 0.4em;
+        margin-bottom: 0.1em;
+
+        pointer-events: none;
+    }
+
+    &_view_main-player &__icon {
+        width: 35px;
+        height: auto;
+        margin: 0;
+
+        @media (max-width: 991px) {
+            width: 20px;
+        }
+    }
+
+    &__result {
+        font-size: 1rem;
+
+        animation-name: float-up;
+        animation-duration: 1s;
+        animation-delay: 0s;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+
+        @keyframes float-up {
+            100% { transform: translateY(-30%); }
+        }
+    }
+
+    &_view_main-player &__result {
+        font-size: 1.5rem;
+
+        @media (max-width: 991px) {
+            font-size: 1rem;
+        }
+    }
+}
+
+.like-btn-wrap {
+
+    &:hover .like-btn__btn,
+    &:focus-within .like-btn__btn {
+
+        @media (min-width: 992px) {
+            opacity: 1;
+        }
+    }
+}

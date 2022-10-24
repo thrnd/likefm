@@ -1,0 +1,135 @@
+.page-footer {
+    padding-top: 22px;
+    padding-bottom: 16px;
+    margin-top: auto;
+
+    font-size: rem(14);
+
+    background-color: var(--secondary-bg);
+
+    @media (max-width: 767px) {
+        padding-top: 18px;
+        padding-bottom: 12px;
+
+        font-size: rem(12);
+    }
+
+    &__inner {
+        display: flex;
+
+        margin-right: -10px;
+        margin-left: -10px;
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+        }
+    }
+
+    &__col {
+        display: flex;
+        align-items: center;
+
+        box-sizing: border-box;
+        flex-basis: 19%;
+        padding: 0 10px;
+
+        &_s_lg {
+            display: block;
+
+            flex-basis: 60%;
+            flex-grow: 1;
+        }
+
+        @media (max-width: 767px) {
+            margin-bottom: rem(14);
+        }
+    }
+
+    &__logo {
+        width: 100%;
+        max-width: 211px;
+
+        @media (max-width: 767px) {
+            max-width: 125px;
+        }
+    }
+
+    p {
+        margin: 0;
+        margin-bottom: 1.25em;
+    }
+
+    &__links {
+        margin-bottom: 0 !important;
+
+        a {
+            margin-right: 1em;
+
+            white-space: nowrap;
+        }
+    }
+
+    a {
+        text-decoration: underline;
+        color: var(--blue);
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+        }
+    }
+}
+
+.app-links {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding-right: 15px;
+
+    @media (max-width: 1280px) {
+        padding-right: 0;
+    }
+    @media (max-width: 767px) {
+        flex-wrap: wrap;
+
+        padding-top: 8px;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: flex-end;
+
+        flex-basis: 100%;
+        margin-bottom: rem(10);
+
+        @media (max-width: 767px) {
+            justify-content: flex-start;
+
+            flex-basis: auto;
+            margin-right: 10px;
+            margin-bottom: rem(6);
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+
+        box-sizing: border-box;
+        min-height: 37px;
+        border: 1px solid var(--app-link-border);
+
+        background-color: var(--black);
+        border-radius: 7px;
+        overflow: hidden;
+
+        @media (max-width: 767px) {
+            min-height: 40px;
+        }
+    }
+
+    &__img {
+        display: block;
+    }
+}

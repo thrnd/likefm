@@ -1,0 +1,164 @@
+.track {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--text);
+
+    // модификатор используется на странице трека
+    &_view_main {
+        flex-direction: row;
+        align-items: flex-end;
+
+        padding-top: 13px;
+        margin-bottom: 4rem;
+
+        @media (max-width: 991px) {
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 767px) {
+            flex-direction: column;
+            align-items: unset;
+
+            width: auto;
+            max-width: 300px;
+            min-width: 200px;
+            padding-top: 6px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 575px) {
+            max-width: 50%;
+        }
+    }
+
+    &__cover-wrap {
+        margin-bottom: rem(20);
+
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+
+        @media (max-width: 991px) {
+            margin-bottom: rem(10);
+        }
+        @media (max-width: 575px) {
+            margin-bottom: rem(5);
+        }
+    }
+
+    &_view_main &__cover-wrap {
+        width: 100%;
+        max-width: 300px;
+        margin-right: 20px;
+        margin-bottom: 0;
+
+        @media (max-width: 767px) {
+            width: auto;
+            margin: 0;
+            margin-bottom: rem(9);
+
+            box-shadow: none;
+        }
+    }
+
+    &_view_main &__cover-ph {
+
+        @media (max-width: 767px) {
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    &__cover {
+        display: block;
+
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    &__title,
+    &__artist {
+        font-size: 1rem;
+        text-decoration: none;
+        color: inherit;
+
+        @media (max-width: 991px) {
+            font-size: rem(13);
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--blue);
+        }
+        &:active {
+            color: var(--d-blue);
+        }
+    }
+
+    &__title {
+        font-weight: bold;
+    }
+
+    &__artist {
+
+        @media (max-width: 991px) {
+            font-size: rem(12);
+        }
+    }
+
+    &__like-btn {
+        position: absolute;
+        top: -7px;
+        right: -7px;
+
+        @media (max-width: 991px) {
+            top: -5px;
+            right: -5px;
+        }
+    }
+
+    &_view_main &__like-btn {
+        top: -13px;
+        right: -10px;
+
+        @media (max-width: 767px) {
+            top: -6px;
+            right: -9px;
+        }
+    }
+}
+
+.track-title {
+    display: flex;
+    flex-direction: column;
+
+    width: auto;
+    margin: 0;
+
+    font-size: rem(28);
+    line-height: 1em;
+    font-weight: bold;
+
+    @media (max-width: 767px) {
+        line-height: inherit;
+    }
+
+    &__track {
+        margin-bottom: 0.05em;
+
+        @media (max-width: 767px) {
+            margin-bottom: 0;
+
+            font-size: rem(18);
+        }
+    }
+
+    &__artist {
+        font-size: rem(24);
+        font-weight: normal;
+
+        @media (max-width: 767px) {
+            font-size: 1rem;
+        }
+    }
+}

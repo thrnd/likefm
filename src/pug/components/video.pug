@@ -1,0 +1,9 @@
+mixin video({ img, title, artist } = {})
+    .video
+        .video__cover-wrap.play-btn-wrap
+            img.video__cover(src=`img/${img}` alt="asd" width="445" height="251")
+            +play-btn(class="js-video-btn play-btn-wrap__btn" data-yt-link="https://www.youtube.com/embed/apOJ1H035DE?autoplay=1")
+        .video__artist
+            = artist
+        .video__title
+            = title

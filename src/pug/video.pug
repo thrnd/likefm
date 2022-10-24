@@ -1,0 +1,45 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Видео"
+    - isInner = true
+
+append content
+    h1.title
+        | Видео
+
+    -
+        const videos = [{
+            artist: "GALIBRI & MAVIK",
+            title: "Федерико Феллини",
+        }, {
+            artist: "Lil NAS X & Jack HARLOW",
+            title: "Industry Baby",
+        }, {
+            artist: "VERBEE",
+            title: "Довела",
+        }, {
+            artist: "GALIBRI & MAVIK",
+            title: "Федерико Феллини",
+        }, {
+            artist: "Lil NAS X & Jack HARLOW",
+            title: "Industry Baby",
+        }, {
+            artist: "VERBEE",
+            title: "Довела",
+        },]
+        n = 0
+    ul.video-list.list-reset
+        while n < videos.length
+            li.video-list__item
+                +video({
+                    img: `video-${n + 1}.jpg`,
+                    title: videos[n].title,
+                    artist: videos[n].artist,
+                })
+            - n++
+
+    button.load-more-btn(type="btn")
+        | Показать еще
+
+    append scripts

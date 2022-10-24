@@ -1,0 +1,51 @@
+mixin player({ isMain = false, mixin = "", num, btnMixin, btnOpts = {}, trackData, isChart = false })
+    .player(class=`${mixin} ${isChart ? "player_view_chart" : ""}`)
+        if num
+            .player__num
+                = num
+        if trackData.time
+            .player__time
+                = trackData.time
+
+        - const roll = Math.round( Math.random() );
+        - btnOpts.disabled = !isMain &&  roll === 1;
+        +play-btn(btnOpts)(class=`player__play-btn ${btnMixin}`)
+
+        if !isMain
+            if roll === 1
+                img.player__cover(src="img/cover_s_sm.jpg" alt="asd" width="50" height="50")
+            else
+                .player__cover
+                    .cover-placeholder
+                        img.cover-placeholder__icon(src="img/track-placeholder.svg" alt="")
+        else
+            .player__cover-wrap
+                if roll === 1
+                    img.player__cover(src="img/cover_s_sm.jpg" alt="asd" width="50" height="50")
+
+                    +like-btn({ isMain: true, mixin: "main-player__like-btn", likes: trackData.likes })
+                else
+                    .player__cover
+                        .cover-placeholder
+                            img.cover-placeholder__icon(src="img/track-placeholder.svg" alt="")
+
+                            +like-btn({ isMain: true, mixin: "main-player__like-btn", likes: trackData.likes })
+
+        if isMain
+            .player__inner#js-socket-titles
+                .player__line.player__track
+                    = trackData.title
+                .player__line.player__artist
+                    = trackData.artist
+            .player__inner#js-sample-titles(style="display:none")
+                .player__line.player__track
+                .player__line.player__artist
+        else
+            .player__inner
+                .player__line.player__track
+                    = trackData.title
+                .player__line.player__artist
+                    = trackData.artist
+
+        if !isMain
+            +like-btn({ likes: trackData.likes })

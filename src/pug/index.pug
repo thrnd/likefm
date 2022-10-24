@@ -1,0 +1,230 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Главная"
+
+append content
+    h1.visually-hidden
+        | Like FM - Слушай, что нравится!
+
+    .index-slider
+        .swiper.index-slider__slider
+            .index-slider__inner.swiper-wrapper
+                - let n = 0
+                while n < 7
+                    a.index-slider__slide.swiper-slide(href=`#${n}` target="_blank")
+                        +single-webpic({
+                            name: `banner-${n + 1}`,
+                            ext: "jpg",
+                            alt: `banner-${n + 1}`,
+                        })(class="index-slider__img" width="1056" height="480")
+                    - n++
+        .index-slider__pagination
+            - n = 0
+            while n < 7
+                button.index-slider__bullet(type="button")
+                - n++
+
+    section.section
+        .section__header
+            h2.title.section__title
+                | Новинки
+            a.section__link(href="#")
+                | Все треки
+        .new-tracks-slider.swiper
+            ul.track-list.track-list_page_index.swiper-wrapper.list-reset
+                -
+                    const newTracks = [{
+                        title: "Early In The Morning",
+                        artist: "KRIS KROSS AMSTERDAM & SHAGGY & Conor MAYNARD",
+                        likes: "20.1К"
+                    }, {
+                        title: "Точка",
+                        artist: "Клава Кока",
+                        likes: "7"
+                    }, {
+                        title: "And You Cut (Provi rmx)",
+                        artist: "Amelie Martinez",
+                        likes: "90"
+                    }, {
+                        title: "Открытка",
+                        artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+                        likes: "124"
+                    }, {
+                        title: "Сон",
+                        artist: "RAMIL’",
+                        likes: "999"
+                    }, {
+                        title: "Пары",
+                        artist: "ТКАЧ"
+                    }]
+                    n = 0
+                while n < newTracks.length
+                    li.track-list__item.swiper-slide
+                        +track({
+                            img: `track-${n + 1}.jpg`,
+                            title: newTracks[n].title,
+                            artist: newTracks[n].artist,
+                            likes: newTracks[n].likes,
+                        })
+                    - n++
+
+    .section.index-banner
+        a(href="#")
+            img.index-banner__banner(src="img/ads.jpg" alt="Alt text")
+
+    section.section
+        .section__header
+            h2.title.section__title
+                | Like Чарт
+            a.section__link.section__link_mobile-hidden(href="#")
+                | Весь чарт
+
+        -
+            const chartems = [{
+                title: "Don't Speak",
+                artist: "Клава КОКА & РУКИ ВВЕРХ",
+            }, {
+                title: "Точка",
+                artist: "Дискотека Авария",
+            }, {
+                title: "Довела",
+                artist: "Верка Сердючка",
+            }, {
+                title: "Don't Speak whenever i'm here ma nigga",
+                artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+            }, {
+                title: "Don't Speak",
+                artist: "KRIS KROSS AMSTERDAM & SHAGGY & Con ...",
+            }];
+            n = 0;
+            while (n < 10) {
+                if (n < 5) {
+                    chartems[n].num = n + 1;
+                    chartems[n].likes = "21.1K";
+                }
+
+                if (n >= 5) {
+                    chartems.push({
+                        num: n + 1,
+                        title: "Don't Speak",
+                        artist: "Клава КОКА & РУКИ ВВЕРХ",
+                    });
+                }
+
+                n++;
+            }
+            n = 0;
+        +track-list({
+            items: chartems,
+            isChart: true,
+            isCols: true,
+            isIndex: true,
+        })
+        a.index-chart-link(href="#")
+            | Еще больше треков
+
+    section.section
+        .section__header
+            h2.title.section__title
+                | Trend Chart
+            a.section__link(href="#")
+                | Все видео
+
+        -
+            let videos = [{
+                artist: "GALIBRI & MAVIK",
+                title: "Федерико Феллини",
+            }, {
+                artist: "Lil NAS X & Jack HARLOW",
+                title: "Industry Baby",
+            }, {
+                artist: "VERBEE",
+                title: "Довела",
+            }, {
+                artist: "GALIBRI & MAVIK",
+                title: "Федерико Феллини",
+            }, {
+                artist: "Lil NAS X & Jack HARLOW",
+                title: "Industry Baby",
+            }, {
+                artist: "VERBEE",
+                title: "Довела",
+            },]
+            n = 0
+        ul.video-list.video-list_page_index.list-reset
+            while n < videos.length
+                li.video-list__item
+                    +video({
+                        img: `video-${n + 1}.jpg`,
+                        title: videos[n].title,
+                        artist: videos[n].artist,
+                    })
+                - n++
+
+
+    section.section
+        .section__header
+            h2.title.section__title
+                | Видео
+            a.section__link(href="#")
+                | Все видео
+
+        -
+            videos = [{
+                artist: "GALIBRI & MAVIK",
+                title: "Федерико Феллини",
+            }, {
+                artist: "Lil NAS X & Jack HARLOW",
+                title: "Industry Baby",
+            }, {
+                artist: "VERBEE",
+                title: "Довела",
+            }, {
+                artist: "GALIBRI & MAVIK",
+                title: "Федерико Феллини",
+            }, {
+                artist: "Lil NAS X & Jack HARLOW",
+                title: "Industry Baby",
+            }, {
+                artist: "VERBEE",
+                title: "Довела",
+            },]
+            n = 0
+        ul.video-list.video-list_page_index.list-reset
+            while n < videos.length
+                li.video-list__item
+                    +video({
+                        img: `video-${n + 1}.jpg`,
+                        title: videos[n].title,
+                        artist: videos[n].artist,
+                    })
+                - n++
+
+    section.section
+        .section__header
+            h2.title.section__title
+                | Новости
+            a.section__link(href="#")
+                | Все новости
+
+        - n = 0
+        .index-news-slider.swiper
+            ul.news-list.news-list_view_slider.swiper-wrapper.list-reset
+                while n < 4
+                    li.news-list__item.swiper-slide
+                        +news-article({
+                            img: `news-${n + 1}.jpg`,
+                            title: "Тайка Вайтити станет пиратом",
+                            desc: "Он выступит и в роли режиссёра, и продюсера комедийного мини-сериала “Наш флаг означает смерть”. Сериал основан на реальных приключениях Стеда Боннета - аристократа, который отказался от своей привилегированной жизни, чтобы стать пиратом в начале XVIII века. Он купил парусник, назвал его “Месть” и путешествовал со своей командой по Восточному побережью нынешних Соединенных Штатов, захватывая и уничтожая другие корабли",
+                        })
+                    - n++
+        .index-news-slider__nav
+            button.index-news-slider__btn.index-news-slider__btn_t_prev(type="button")
+                +svg("arrow")(class="index-news-slider__icon" width="40" height="18")
+            button.index-news-slider__btn.index-news-slider__btn_t_next(type="button")
+                +svg("arrow")(class="index-news-slider__icon" width="40" height="18")
+
+    append scripts
+        script(src="js/swiper.8_CUSTOM-BUNDLE.min.js")
+        script(src="js/swiper.5.2.0.min.js")

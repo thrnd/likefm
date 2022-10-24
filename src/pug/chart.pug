@@ -1,0 +1,52 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Чарт"
+    - isAside = true
+    - isInner = true
+
+append content
+    h1.title
+        | Чарт
+
+    -
+        const chartems = [{
+            title: "Don't Speak",
+            artist: "Клава КОКА & РУКИ ВВЕРХ",
+        }, {
+            title: "Точка",
+            artist: "Дискотека Авария",
+        }, {
+            title: "Довела",
+            artist: "Верка Сердючка",
+        }, {
+            title: "Don't Speak",
+            artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+        }, {
+            title: "Don't Speak",
+            artist: "KRIS KROSS AMSTERDAM & SHAGGY & Con ...",
+        }];
+        n = 0;
+        while (n < 10) {
+            if (n < 5) {
+                chartems[n].num = n + 1;
+                chartems[n].likes = "21.1K";
+            }
+
+            if (n >= 5) {
+                chartems.push({
+                    num: n + 1,
+                    title: "Don't Speak",
+                    artist: "Клава КОКА & РУКИ ВВЕРХ",
+                });
+            }
+
+            n++;
+        }
+        n = 0;
+    +track-list({
+        items: chartems,
+        isChart: true,
+    })
+
+    append scripts

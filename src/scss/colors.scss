@@ -1,0 +1,95 @@
+@mixin lightColors {
+    // общие цвета для сайта
+
+    --text:             var(--l-black);
+    --main-bg:          var(--l-gray);
+    --secondary-bg:     var(--white);
+    --input-hovered:    var(--d-gray);
+    --input-focused:    var(--black);
+    --bullet:           var(--l-black-50);
+
+    // специфичные для компонентов цвета
+
+    // header
+        --header-bg:            var(--gray);
+        --header-btn:           var(--l-black-50);
+        --header-btn-hovered:   var(--l-black);
+        --header-scrollbar:     var(--l-black-50);
+
+        // logo
+        --logo-text: var(--blue);
+
+    // footer
+        --app-link-border:  var(--black);
+
+    // datepicker
+        --dp-bg:            var(--secondary-bg);
+        --dp-d-bg:          var(--main-bg);
+        --dp-btn-active:    var(--d-blue);
+}
+
+@mixin darkColors {
+    // общие цвета для сайта
+
+    --text:             var(--white);
+    --main-bg:          #121212;
+    --secondary-bg:     var(--black);
+    --input-focused:    var(--white);
+    --bullet:           var(--d-gray);
+
+    // специфичные для компонентов цвета
+
+    // header
+        --header-bg:            var(--black);
+        --header-btn:           var(--white-50);
+        --header-btn-hovered:   var(--white);
+        --header-scrollbar:     var(--l-black-50);
+
+        // logo
+        --logo-text: var(--white);
+
+    // footer
+        --app-link-border:  #A6A6A6;
+}
+
+:root {
+    --white:        #ffffff;
+    --white-50:     rgba(255, 255, 255, .5);
+
+    --black:        #000000;
+    --l-black:      #333333;
+    --black-50:     rgba(0, 0, 0, .5);
+    --l-black-50:   rgba(51, 51, 51, .5);
+
+    --gray:         #ededed;
+    --l-gray:       #F5F5F5;
+    --d-gray:       #757575;
+
+    --red:          #E62A32;
+    --red-50:       rgba(230, 40, 50, 0.5);
+    --blue:         #0090D4;
+    --d-blue:       #006a9b;
+    --blue-50:      rgba(0, 144, 212, .5);
+
+    // да, это пнг в base64
+    // сделал так, потому что эта картинка нужна сразу
+    // если будет грузиться еще и лоадер, то это такое себе
+    // (обе картинки весят около 5кб в суммме)
+    --loader: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAATMSURBVFhHxZlJiFRXFIa7O5o4xBhDjIaQ1qhEVFBBQwiikJVEIRBF3EpQV4IuXLgOuHbtxo0rV7oSMRCFLKIE4wDOiUMwTjjhkKS71fL7Xt9T3q6uKqvVevXDx31Dvfv+d84d3rvV3fUaqlQqYyimwCeJCeCx0fAc/ocn8ADuwD24293d3Uc5IrVsEFPvUHwIc2E6vA+jQEONeJZKjT2E23AFHmHW469USwYxN5FiMWjuPbDySirDRBD7tceD/+BvuIzJx5RN1dQgxkzZPPgWTKE30FhuonY/PxbHg3xfoxfgGkY9XlcNDWJuPMVSWAj1UmnabGe2sVtgCr2p5t6FcfAR2BTc915eFw/gdj/8Axcx6fYw1TWIOdO4Cr4sDgxWFlGxoj/hLFx/VZqoS6MfwzTQcJiL+tz2AU9T11PKIRpmMEXue7C9WUlU6MWX4TDcapaWeqJeO9kkmAkaVdYbZjV5vjaSQwxSiW1uJXxVHHhpzmHjKByBJ1RC8XpK9/gCPgdNh0m5Bpeo3+1CPakMLUp4oefESB2EQ1z4RuYU1w9QXITzYFY0E5mKsbWqqkGezBPLYSyEQTvCfjieP9Wbiro0Y+c4BxqOtujT9+LFPlCoMJjaxxJwvPNYhMmUHqPCEbW3VpRM3gDTqrlAL1PxVHiICE4F211EztKe+uvbjFytkkkN3ofcpJ3Icbdq8BtwPnVf/NFhKviXst0yxVch2qMYoKKn9xBKh5VZboNhFYcT58y2iyBYOODXRnEC3kZpyi5vit3Wue3tNy70yUpRSvVdyKPocDRWU73gaB/tz7RegrLljOSoET1aFQaNoGVwkycy3KUqZcy5PCIoYzT0GYQ5o1hK22sgs5cbHK0pX0LDoJQevUzOw6a4OnBryNehMGcEDXOnlHeSqkFNBe53UvbmPILPNWTEwqjlB9ApOShG9DQ5oKFHYOlJTU6GTkkfYdBoPvXATchT7KzSKTk4R4qlT0MOykbPbU36uhNvvKUpvVFJRFD6NeXLo2/MbovmfN0vW0ZPRQexLAz+BX6ZRYp9YV3mRE1ZiriXGfTLL9qeOCYO9DDF2EmOQaRZvoZZXEhRiiI4efvrx1sxzCi/1KI3i1H8EZxl2qoUPdObR0+DNrvCjLoOmgyD4gf7mhJSbf2ajI4h8VYzaJBQOsXsBVcHPBZP9QOsaLNJ72fUwpxe+vBEkQwqDrjytAvyHu08vQVWttFkGAuTmrMsVDWY9AscAH8cncaPl02wHpPtmAaNWLVjpP2qBuOYCRMuT2wFF46id4mmf4fdcJKntJ20LOp1GJkNrtEcB9d1rNNzFnqpRGpDwwwqLvBDahu47GZb9HeaLSoBh6V98AcVOlU2FHV9SuFX42r4Dqz7DKzj2pOUTVXXoKJih5gN4FqNbdHfRjTFV3SXeJ0qT4FG7WT+ztnItRdHgjngkkb+3ulvfsLgdsqmamhQYdL2twI2gksjVh6RzNNfu53v154Xr9+MwZ2UTdXUYAijtpu1oFnX+ryu3o1rj9U77+el7XgHBt1uqpYMKkzaFmeAY6Pr1S6kuxoRA20jQ57zk9Iljp9hD7jENmQdsJFaNpgrtc8FYPuaD67E2gQ8rkmnTV9AXKE4AfbaE5jy74gRqKvrBbkZx1DxjdjuAAAAAElFTkSuQmCC');
+    --loader_c_blue: url('data:image/png;base64,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');
+}
+
+:root,
+:root.light-theme {
+    @include lightColors;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include darkColors;
+    }
+}
+
+:root.dark-theme {
+    @include darkColors;
+}

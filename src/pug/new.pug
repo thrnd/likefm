@@ -1,0 +1,48 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Новинки"
+    - isInner = true
+
+append content
+    h1.title
+        | Новинки
+
+    ul.track-list.list-reset
+        -
+            const newTracks = [{
+                title: "Early In The Morning",
+                artist: "KRIS KROSS AMSTERDAM & SHAGGY & Conor MAYNARD",
+                likes: "20.1К"
+            }, {
+                title: "Точка",
+                artist: "Клава Кока",
+                likes: "7"
+            }, {
+                title: "And You Cut (Provi rmx)",
+                artist: "Amelie Martinez",
+                likes: "90"
+            }, {
+                title: "Открытка",
+                artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+                likes: "124"
+            }, {
+                title: "Сон",
+                artist: "RAMIL’",
+                likes: "999"
+            }, {
+                title: "Пары",
+                artist: "ТКАЧ"
+            }]
+            n = 0
+        while n < newTracks.length
+            li.track-list__item
+                +track({
+                    img: `track-${n + 1}.jpg`,
+                    title: newTracks[n].title,
+                    artist: newTracks[n].artist,
+                    likes: newTracks[n].likes,
+                })
+            - n++
+
+    append scripts

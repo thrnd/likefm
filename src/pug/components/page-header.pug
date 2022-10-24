@@ -1,0 +1,193 @@
+header.page-header
+    +logo(class="page-header__logo")
+
+    .page-header__btn-placeholder
+
+    .page-header__inner
+        button.toggle-menu-btn.page-header__btn(type="button" aria-label="Открыть меню")
+            span.toggle-menu-btn__line
+
+        .menu-wrap
+            ul.menu.list-reset.page-header__menu
+                li.menu__item
+                    a.menu__link.menu__link_active(href="/" data-icon="home")
+                        +svg("home_filled")(class="menu__icon" width="20" height="20")
+                        | Главная
+                li.menu__item
+                    a.menu__link(href="/new.html" data-icon="star")
+                        +svg("star")(class="menu__icon" width="20" height="20")
+                        | Новинки
+                li.menu__item
+                    a.menu__link(href="/chart.html" data-icon="like")
+                        +svg("like")(class="menu__icon" width="20" height="20")
+                        | Like Чарт
+                li.menu__item
+                    a.menu__link(href="/video.html" data-icon="video")
+                        +svg("video")(class="menu__icon" width="20" height="20")
+                        | Видео
+                li.menu__item
+                    a.menu__link(href="/trend.html" data-icon="fire")
+                        +svg("fire")(class="menu__icon" width="19" height="26")
+                        | Trend Chart
+                li.menu__item
+                    a.menu__link(href="/playlist.html" data-icon="radio")
+                        +svg("radio")(class="menu__icon" width="20" height="20")
+                        | Плейлист
+                li.menu__item
+                    a.menu__link(href="/news.html" data-icon="news")
+                        +svg("news")(class="menu__icon" width="20" height="20")
+                        | Новости
+
+            .page-header__city
+                | Город вещания: 
+                button.js-popup-btn.city-change-btn(type="button" data-popup-target=".city-popup")
+                    | Москва 87.9 FM
+
+            a.tg-btn(href="https://t.me/likefmradio" target="_blank" rel="noopener")
+                +svg("tg")(class="tg-btn__icon" width="26" height="20")
+                | Подписаться
+                span.visually-hidden
+                    | на телеграмм Like FM
+            +social-links(class="page-header__socials")
+
+    button.open-search-btn.page-header__btn(type="button" aria-label="Открыть форму поиска")
+        +svg("search")(class="open-search-btn__icon" width="20" height="20")
+
++search(class="page-header__search")
+
+button.js-theme-btn.toggle-theme-btn.page-header__btn(type="button" aria-label="Переключиться на темную тему")
+    +svg("sun")(class="toggle-theme-btn__icon" width="25" height="25")
+    +svg("moon")(class="toggle-theme-btn__icon toggle-theme-btn__icon_t_dark" width="25" height="25")
+
+.main-player
+    +player({
+        isMain: true,
+        mixin: "main-player__player player_view_main",
+        btnMixin: "play-btn_s_xs play-btn_always-visible",
+        btnOpts: {},
+        trackData: {
+            title: "Don't Speak for the longest time of your life please",
+            artist: "CHAEL & KAII",
+        },
+    })
+
+    audio(data-player='likefm-main-player')
+
+    button.main-player__expand-btn(type="button" aria-label="Показать плейлист")
+        +svg("arrow")(class="main-player__expand-icon" width="17" height="10")
+
+    button.main-player__back-to-live(type="button")
+        | Вернуться в эфир
+
+    .volume-control.main-player__volume
+        button.volume-control__mute-btn.icon.icon-volume.left(aria-label="Выключить/включить звук")
+        .volume-control__inner
+            .progress-bar
+                .progress-bar__back(style="width: 20%")
+                .progress-bar__thumb(style="margin-left:20%")
+
+    button.js-popup-btn.main-player__city-btn.city-change-btn(type="button" data-popup-target=".city-popup")
+        | Санкт-Петербург 102.9 FM
+
+button.js-popup-btn.feedback-btn(type="button" data-popup-target=".popup_content_feedback-form" data-lock-scroll aria-label="Открыть форму обратной связи")
+    +svg("feedback")(class="feedback-btn__icon" width="32" height="32")
+
+.popup.popup_content_feedback-form
+    form.feedback-form.popup__inner(action="#" method="post" data-check)
+        button.feedback-form__close.popup__close(type="button" aria-label="Закрыть форму")
+        h3.title.feedback-form__title
+            | Вы нашли ошибку? Напишите нам!
+        label.label.feedback-form__label.feedback-form__label_s_full-row
+            input.input.feedback-form__input.label__input(type="text" data-type="name" name="name" required data-required="true")
+            span.label__text
+                | Ваше имя
+        label.label.feedback-form__label
+            input.input.feedback-form__input.label__input(type="email" data-type="email" name="email" required data-required="true")
+            span.label__text
+                | E-Mail
+        label.label.feedback-form__label
+            input.input.feedback-form__input.label__input(type="tel" data-type="tel" name="phone")
+            span.label__text
+                | Телефон
+        label.label.feedback-form__label.feedback-form__label_s_wide
+            textarea.input.feedback-form__input.label__input.input_t_textarea(name="error" required data-required="true")
+            span.label__text
+                | Описание ошибки
+        button.feedback-form__submit(type="submit")
+            | Отправить
+        .feedback-form__reponse
+            | Ваше сообщение успешно отправлено!
+
+.city-popup.popup
+    button.city-popup__close.popup__close(type="button" aria-label="Закрыть окно выбора городов вещания")
+
+    ul.city-list.list-reset
+        li.city-list__item
+            button.city-list__btn(type="button" data)
+                | Брянск 100.3 FM
+        li.city-list__item
+            button.city-list__btn(type="button" data)
+                | Красноярск 95.0 FM
+        li.city-list__item
+            button.city-list__btn(type="button" data)
+                | Унеча 100.7 FM
+        li.city-list__item
+            button.city-list__btn(type="button" data)
+                | Орехово-Зуево 92.6 FM
+        li.city-list__item
+            button.city-list__btn(type="button" data)
+                | Рязань 103.2 FM
+        li.city-list__item
+            button.city-list__btn(type="button" data)
+                | Москва 87.9 FM
+
+.main-playlist.container.layout-grid
+    .main-playlist__inner.layout-grid__main
+        .title.main-playlist__title
+            | В эфире
+        .track-onair
+            img.track-onair__cover(src="img/cover_s_sm.jpg" alt="Обложка" width="158" height="158")
+
+            .track-onair__inner
+                .track-onair__artist
+                    | CHAEL &amp; KAII
+                .track-onair__title
+                    | Don't Speak
+
+        +form({ mixin: "main-playlist__form" })
+
+        .main-playlist__sub-title
+            | Плейлист
+
+        -
+            const playlistItems = [{
+                title: "Точка",
+                artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+                time: "10:35",
+            }, {
+                title: "Don't Speak",
+                artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+                time: "1:11",
+            }, {
+                title: "Довела",
+                artist: "Верка Сердючка",
+                time: "0:35",
+            }, {
+                title: "Don't Speak",
+                artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+                time: "23:35",
+            }, {
+                title: "Don't Speak",
+                artist: "KRIS KROSS AMSTERDAM & SHAGGY & Con ...",
+                time: "10:35",
+            }];
+
+        +track-list({
+            items: playlistItems,
+        })(id="js-main-playlist")
+
+        a.main-playlist__full-link(href="#")
+            | Полный плейлист
+
+    .layout-grid__aside
+        img(src="img/ads-aside.png" style="width:100%;max-width:300px")

@@ -1,0 +1,11 @@
+mixin news-article({ title, img, desc })
+    article.news-article
+        img.news-article__img(loading="lazy" src=`img/${img}` alt=title)
+        .news-article__inner
+            .news-article__title-wrap
+                h3.news-article__title
+                    = title
+                button.news-article__share(type="button" aria-label="Скопировать ссылку на новость в буфер обмена" data-link="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard")
+                    +svg("share")(class="news-article__icon" width="20" height="21")
+            p.news-article__desc
+                = desc

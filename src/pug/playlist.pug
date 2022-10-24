@@ -1,0 +1,41 @@
+extends ./components/_base
+
+append vars
+    - pageTitle = "Плейлист"
+    - isInner = true
+    - isAside = true
+
+append content
+    h1.title
+        | Плейлист
+
+    +form
+
+    -
+        const playlistItems = [{
+            title: "Точка",
+            artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+            time: "10:35",
+        }, {
+            title: "Don't Speak",
+            artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+            time: "1:11",
+        }, {
+            title: "Довела",
+            artist: "Верка Сердючка",
+            time: "0:35",
+        }, {
+            title: "Don't Speak",
+            artist: "Ваня ДМИТРИЕНКО & ХАБИБ",
+            time: "23:35",
+        }, {
+            title: "Don't Speak",
+            artist: "KRIS KROSS AMSTERDAM & SHAGGY & Con ...",
+            time: "10:35",
+        }];
+
+    +track-list({
+        items: playlistItems,
+    })
+
+    append scripts

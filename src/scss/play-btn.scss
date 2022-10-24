@@ -1,0 +1,165 @@
+// по ум. кнопка располагается поверх картинки
+// и появляется при наведении на эту картинку
+// для вставки обычной кнопки испльзуем модификатор _always-visible
+
+.play-btn {
+    --icon-width: 66px;
+    --icon-height: 54px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+
+    color: currentColor;
+
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+
+    @media (max-width: 991px) {
+        --icon-width: 38px;
+        --icon-height: 31px;
+    }
+
+    &:hover,
+    &:active {
+        color: var(--blue);
+    }
+    &:focus {
+
+        @media (min-width: 992px) {
+            color: var(--blue);
+        }
+    }
+
+    &.play {
+        opacity: 0;
+    }
+
+    &_always-visible.play {
+        opacity: 1;
+    }
+
+    &::before {
+        content: "";
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: var(--icon-width);
+        height: var(--icon-height);
+
+        background: var(--loader) no-repeat center /contain;
+
+        transform: translate(-50%, -50%);
+
+        animation-name: loaderspin;
+        animation-duration: .75s;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+
+        @keyframes loaderspin {
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    }
+
+    &_s {
+        &_sm {
+            --icon-width: 32px;
+            --icon-height: 26px;
+
+            @media (max-width: 991px) {
+                --icon-width: 24px;
+                --icon-height: 20px;
+            }
+        }
+        &_xs {
+            --icon-width: 24px;
+            --icon-height: 20px;
+        }
+    }
+
+    &_disabled {
+        color: var(--d-gray) !important;
+
+        cursor: default;
+    }
+
+    &__icon {
+        display: none;
+
+        width: var(--icon-width);
+        height: var(--icon-height);
+
+        fill: currentColor;
+        pointer-events: none;
+
+        &_t_play {
+            margin-left: 3%;
+        }
+    }
+
+    &.play &__icon {
+        display: none;
+    }
+    &.play &__icon_t_play {
+        display: block;
+    }
+    &.pause &__icon {
+        display: block;
+    }
+    &.pause &__icon_t_play {
+        display: none;
+    }
+
+    &.play::before,
+    &.pause::before {
+        content: none;
+    }
+}
+
+.play-btn-wrap {
+    position: relative;
+
+    &__btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        color: var(--white);
+
+        background-color: var(--black-50);
+        transition: opacity .15s;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &.pause {
+            color: var(--white);
+        }
+        &:active {
+            color: var(--blue);
+        }
+    }
+
+    &:focus-within &__btn {
+        opacity: 1;
+    }
+
+    &:hover &__btn {
+        @media (hover) {
+            opacity: 1;
+        }
+    }
+}
